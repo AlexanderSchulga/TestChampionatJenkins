@@ -6,7 +6,7 @@ public enum ChampionatUrls {
 
     //Что бы в Enum передавать параметры
     //в нем нужно:
-
+    //
     //Поле класса
     private String url;
 
