@@ -33,7 +33,7 @@ pipeline {
         stage('Сборка') {
             steps {
                 echo 'Сборка проекта...'
-                sh 'mvn clean compile'
+                bat 'mvn clean install'
             }
         }
 
