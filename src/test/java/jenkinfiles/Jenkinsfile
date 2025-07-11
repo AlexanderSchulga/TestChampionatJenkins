@@ -8,7 +8,6 @@ pipeline {
         JAVA_HOME = 'C:\\Program Files\\Java\\jdk-17'
         BASE_URL = 'https://www.championat.com/'
         BROWSER = 'chrome'
-
     }
 
     triggers {
@@ -50,13 +49,12 @@ pipeline {
                     // Запуск тестов через Maven
                     sh 'mvn clean test'
 
-                    // Если нужно передать  параметры, для разных окружений:
-                    //к примеру, в headless-режиме (запуск без gui, в командной строке)
+                    // Если нужно передать параметры, для разных окружений:
+                    // к примеру, в headless-режиме (запуск без gui, в командной строке)
 
                     // sh 'mvn clean test -Dselenide.browser=chrome -Dcucumber.filter.tags="@smoke"'
                 }
             }
-        }
 
             post {
                 always {
@@ -78,8 +76,8 @@ pipeline {
                     echo 'Тесты прошли успешно!'
                 } else {
                     echo 'Обнаружены ошибки в тестах!'
-
                 }
             }
         }
     }
+}
