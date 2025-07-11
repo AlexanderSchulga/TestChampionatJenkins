@@ -1,0 +1,93 @@
+package jenkinfiles
+
+pipeline {
+    agent any
+
+    // Настройки окружения
+    environment {
+        // Укажите путь к Java
+        JAVA_HOME = 'C:\\Program Files\\Java\\jdk-17'
+
+        // Базовый URL тестируемого сайта
+        BASE_URL = 'https://www.championat.com/'
+
+        // Дополнительные переменные, если нужно
+        BROWSER = 'chrome' // или 'firefox' и т.д.
+    }
+
+    // Настройки триггеров - запуск при изменениях в GitHub
+    triggers {
+        // Запускать при push в репозиторий
+        pollSCM('H/5 * * * *') // Проверять изменения каждые 5 минут
+
+        // Или по расписанию (например, ежедневно в 9 утра)
+        // cron('H 9 * * *')
+    }
+
+    stages {
+        // Этап подготовки
+        stage('Подготовка') {
+            steps {
+                echo 'Клонирование репозитория и настройка окружения...'
+
+                // Очистка рабочей директории
+                cleanWs()
+
+                // Клонирование проекта из GitHub
+                git(
+                        branch: 'master',
+                        url: 'https://github.com/AlexanderSchulga/TestChampionatJenkins.git',
+                        credentialsId: 'github-credentials' // ID ваших учётных данных в Jenkins
+                )
+            }
+        }
+
+        // Этап сборки
+        stage('Сборка') {
+            steps {
+                echo 'Сборка проекта...'
+
+                // Установка зависимостей и компиляция
+                sh 'mvn clean compile'
+            }
+        }
+
+        // Этап запуска тестов
+        stage('Запуск тестов') {
+            steps {
+                echo 'Запуск UI-тестов...'
+
+                // Запуск тестов через Maven
+                sh 'mvn test'
+            }
+
+            post {
+                always {
+                    // Сохранение отчётов о тестах
+                    junit '**/target/surefire-reports/*.xml'
+
+                    // Можно добавить Allure отчёты, если используете
+                    // allure includeProperties: false,
+                    //     jdk: '', results: [[path: 'target/allure-results']]
+                }
+            }
+        }
+    }
+
+    // Действия после завершения pipeline
+    post {
+        always {
+            echo 'Pipeline завершен.'
+
+            // Отправка уведомления о результате
+            script {
+                if (currentBuild.result == 'SUCCESS') {
+                    // Можно добавить уведомление в Slack/Email и т.д.
+                    echo 'Тесты прошли успешно!'
+                } else {
+                    echo 'Обнаружены ошибки в тестах!'
+                }
+            }
+        }
+    }
+}
