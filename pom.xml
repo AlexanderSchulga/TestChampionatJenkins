@@ -135,7 +135,9 @@
                 <version>3.5.3</version>
                 <configuration>
                     <includes>
-                        <include>**/resources/features/Rfpl.feature</include>
+                        <include>**/*Test.java</include>
+                        <include>**/*Tests.java</include>
+                        <include>**/*Runner.java</include>
                     </includes>
                 </configuration>
             </plugin>

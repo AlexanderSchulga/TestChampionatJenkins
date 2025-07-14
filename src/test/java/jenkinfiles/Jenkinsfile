@@ -49,7 +49,7 @@ pipeline {
                     // так как Selenide автоматически управляет драйверами
 
                     // Запуск тестов через Maven
-                    bat 'mvn clean install'
+                    bat 'mvn clean test surefire-report:report-only'
 
                     // Если нужно передать параметры, для разных окружений:
                     // к примеру, в headless-режиме (запуск без gui, в командной строке)
