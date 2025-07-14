@@ -32,12 +32,12 @@ pipeline {
             }
         }
 
-        stage('Сборка') {
-            steps {
-                echo 'Сборка проекта...'
-                bat 'mvn clean install'
-            }
-        }
+//        stage('Сборка') {
+//            steps {
+//                echo 'Сборка проекта...'
+//                bat 'mvn clean install'
+//            }
+//        }
 
         stage('Запуск тестов') {
             steps {
