@@ -35,7 +35,7 @@ pipeline {
         stage('Запуск тестов') {
             steps {
                 echo 'Запуск UI-тестов с Selenide и Cucumber...'
-                bat 'mvn clean test'
+                bat 'mvn clean test -X'
             }
             post {
                 always {
@@ -43,6 +43,9 @@ pipeline {
                     junit '**/target/surefire-reports/**/*.xml'
                     cucumber '**/target/cucumber-reports/**/*.json'
                     archiveArtifacts artifacts: '**/target/**/*.*', allowEmptyArchive: true
+
+                    // Сохраняем логи тестов
+                    archiveArtifacts artifacts: '**/target/surefire-reports/*.txt', allowEmptyArchive: true
                 }
             }
         }
