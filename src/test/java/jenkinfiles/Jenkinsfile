@@ -1,3 +1,5 @@
+#!groovy encoding: UTF-8
+
 package jenkinfiles
 
 pipeline {
