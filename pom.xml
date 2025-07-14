@@ -30,7 +30,7 @@
         <java.version>17</java.version>
         <cucumber.version>7.21.1</cucumber.version>
         <junit.version>5.11.4</junit.version>
-        <maven.surefire.plugin.version>3.2.3</maven.surefire.plugin.version>
+        <maven.surefire.plugin.version>3.2.5</maven.surefire.plugin.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
