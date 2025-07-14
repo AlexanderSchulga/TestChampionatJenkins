@@ -32,37 +32,17 @@ pipeline {
             }
         }
 
-//        stage('Сборка') {
-//            steps {
-//                echo 'Сборка проекта...'
-//                bat 'mvn clean install'
-//            }
-//        }
-
         stage('Запуск тестов') {
             steps {
                 echo 'Запуск UI-тестов с Selenide и Cucumber...'
-
-                // необходимые переменные окружения
-                script {
-                    // Для Selenide обычно не требуется явно указывать путь к драйверу,
-                    // так как Selenide автоматически управляет драйверами
-
-                    // Запуск тестов через Maven
-                    bat 'mvn clean test surefire-report:report-only'
-
-                    // Если нужно передать параметры, для разных окружений:
-                    // к примеру, в headless-режиме (запуск без gui, в командной строке)
-
-                    // sh 'mvn clean test -Dselenide.browser=chrome -Dcucumber.filter.tags="@smoke"'
-                }
+                bat 'mvn clean test'
             }
-
             post {
                 always {
-                    junit '**/target/surefire-reports/*.xml'
-                    // Архивирование результатов
-                    archiveArtifacts artifacts: '**/target/surefire-reports/*.*', allowEmptyArchive: true
+                    // Ищем отчеты в правильных местах
+                    junit '**/target/surefire-reports/**/*.xml'
+                    cucumber '**/target/cucumber-reports/**/*.json'
+                    archiveArtifacts artifacts: '**/target/**/*.*', allowEmptyArchive: true
                 }
             }
         }

@@ -135,13 +135,10 @@
                 <version>3.5.3</version>
                 <configuration>
                     <includes>
-                        <include>**/*Test.java</include>
-                        <include>**/*Tests.java</include>
-                        <include>**/*Runner.java</include>
+                        <include>**/CucumberTestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 

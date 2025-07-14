@@ -8,7 +8,8 @@ import org.junit.runner.RunWith;
         glue = "steps",
         plugin = {
                 "pretty",
-                "html:target/cucumber-reports.html",
+                "html:target/cucumber-reports/cucumber.html",
+                "json:target/cucumber-reports/cucumber.json",
                 "junit:target/surefire-reports/cucumber.xml"
         }
 )
