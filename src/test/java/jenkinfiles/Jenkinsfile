@@ -35,7 +35,7 @@ pipeline {
         stage('Запуск тестов') {
             steps {
                 echo 'Запуск UI-тестов с Selenide и Cucumber...'
-                bat 'mvn clean test -X'
+                bat 'mvn clean test'
             }
             post {
                 always {
