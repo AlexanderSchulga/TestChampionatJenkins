@@ -11,10 +11,6 @@ pipeline {
         BASE_URL = 'https://www.championat.com/'
         BROWSER = 'chrome'
 
-        JAVA_TOOL_OPTIONS = '-Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8'
-        LANG = 'en_US.UTF-8'
-        LC_ALL = 'en_US.UTF-8'
-
     }
 
     triggers {
@@ -40,7 +36,7 @@ pipeline {
         stage('Запуск тестов') {
             steps {
                 echo 'Запуск UI-тестов с Selenide и Cucumber...'
-                bat 'mvn clean test -Dfile.encoding=UTF-8'
+                bat 'mvn clean test'
             }
             post {
                 always {
