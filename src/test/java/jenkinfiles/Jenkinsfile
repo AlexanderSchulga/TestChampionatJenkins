@@ -40,7 +40,7 @@ pipeline {
         stage('Запуск тестов') {
             steps {
                 echo 'Запуск UI-тестов с Selenide и Cucumber...'
-                bat 'mvn clean test'
+                bat 'mvn clean test -Dfile.encoding=UTF-8'
             }
             post {
                 always {
