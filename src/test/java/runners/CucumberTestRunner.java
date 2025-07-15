@@ -22,15 +22,5 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
                 "junit:target/surefire-reports/cucumber.xml")
 public class CucumberTestRunner {
 
-//    @BeforeEach
-//    public void testSetUp() {
-//        Configuration.headless = true;
-//
-//    }
-//
-//    @AfterEach
-//    public void testTearDown() {
-//
-//    }
 
 }

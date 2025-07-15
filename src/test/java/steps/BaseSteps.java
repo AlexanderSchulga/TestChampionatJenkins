@@ -3,8 +3,6 @@ package steps;
 import com.codeborne.selenide.Selenide;
 import constants.ChampionatUrls;
 import io.cucumber.java.en.Given;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 
 public class BaseSteps {
 
