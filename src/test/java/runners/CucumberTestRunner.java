@@ -1,9 +1,8 @@
 package runners;
 
 import com.codeborne.selenide.Configuration;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.IncludeEngines;
 import org.junit.platform.suite.api.SelectClasspathResource;
@@ -23,14 +22,15 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
                 "junit:target/surefire-reports/cucumber.xml")
 public class CucumberTestRunner {
 
-    @Before
-    public void testSetUp() {
-        Configuration.headless = true;
+//    @BeforeEach
+//    public void testSetUp() {
+//        Configuration.headless = true;
+//
+//    }
+//
+//    @AfterEach
+//    public void testTearDown() {
+//
+//    }
 
-    }
-
-    @After
-    public void testTearDown() {
-
-    }
 }
