@@ -12,7 +12,7 @@ public class BaseSteps {
 
     @BeforeEach
     public void testSetUp() {
-        Configuration.headless = true;
+        Configuration.headless = false;
 
     }
 
