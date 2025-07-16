@@ -101,7 +101,7 @@
                 <version>3.5.3</version>
                 <configuration>
                     <includes>
-                        <include>**/CucumberTestRunner.java</include>
+                        <include>**/runners.CucumberTestRunner.java</include>
                         <include>**/*Test*.java</include>
                         <include>**/*Tests.java</include>
                     </includes>
